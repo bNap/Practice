@@ -1,0 +1,41 @@
+#include<vector>
+#include<iostream>
+#include<algorithm>
+
+using namespace std;
+
+int main()
+{
+	int num, c = 0, sum = 0, i = 0;
+	vector<int> v;
+	cin >> num;
+	while (c++<num){
+		int temp;
+		cin >> temp;
+		v.push_back(temp);
+	}
+	sort(v.begin(), v.end());
+	for (; i < num - 2; ++i){
+		if (v[i + 1] - v[i] <= 10 && v[i + 2] - v[i + 1] <= 10){
+			i += 2;
+		}
+		else if (v[i + 1] - v[i] <= 10 && v[i + 2] - v[i + 1] > 10){
+			++sum;
+			++i;
+		}
+		else if (v[i + 1] - v[i] > 10){
+			sum += 2;
+		}
+	}
+	if (i == num - 2){
+		if (v[i + 1] - v[i] <= 10)
+			sum += 1;
+		else
+			sum += 4;
+	}
+	else if (i == num - 1){
+		sum += 2;
+	}
+	cout << sum;
+	return 0;
+}
