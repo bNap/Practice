@@ -1,0 +1,37 @@
+#include<vector>
+#include<iostream>
+#include<algorithm>
+
+using namespace std;
+
+int main()
+{
+	int n = 0, m = 0, c = 0, y = 1, count = 0, s = 0;
+	vector<int> v, num;
+	cin >> n >> m;
+	int m2 = m;
+	while (m2){
+		m2 /= 2;
+		y *= 2;
+	}
+	y /= 2;
+	while (c++<n){
+		int temp;
+		cin >> temp;
+		num.push_back(temp);
+	}
+	for (int i = 0; i < n; ++i){
+		for (int j = i + 1; j < n; ++j){
+			if (num[i] < y&&num[j] < y)
+				continue;
+			v.push_back(num[i] ^ num[j]);
+			++s;
+		}
+	}
+	for (int i = 0; i < s; ++i)
+		if (v[i]>m)
+			++count;
+	
+	cout << count;
+	return 0;
+}
